@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
@@ -12,16 +12,23 @@ import {
     Link
 } from "react-router-dom";
 import {UserPanel} from "./UserPanel/UserPanel";
-import {NavBarCustom} from "./NavBar/NavBar";
+import {NavBar} from "./NavBar/NavBar";
 import LoginComp from "./LoginComp/LoginComp";
 
 export default function App() {
+
+    const [loggedIn, setLoggedIn] = useState(
+        // initial value
+        document.cookie.split(';').some((item) => item.trim().startsWith('logedIn=')));
+
     return (
         <div>
             <Router>
-            <NavBarCustom/>
+                <NavBar {...{loggedIn}}/>
                 <div>
-                    <Route exact path="/login" component={LoginComp}/>
+                    <Route exact path="/login" render={
+                        (routeProps) => <LoginComp {...{setLoggedIn, ...routeProps}} />
+                    }/>
                     <Route exact path="/station" component={SearchStation}/>
                     <Route exact path="/user" component={UserPanel}/>
                 </div>

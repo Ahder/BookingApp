@@ -15,6 +15,7 @@ export default class LoginComp extends Component<any, any> {
 
     async lunchLogin() {
         let isConnected = await LoginCall(this.state.email, this.state.password) || false;
+        this.props.setLoggedIn(isConnected);
         return isConnected ? this.setState({status: true}) : this.setState({status: false});
     }
 
