@@ -19,17 +19,21 @@ export default function App() {
         // initial value
         document.cookie.split(';').some((item) => item.trim().startsWith('email=')));
 
+    const [promo, setPromo] = useState(
+        // initial value
+        document.cookie.split(';').some((item) => item.trim().startsWith('reduc=')));
+
     return (
         <div>
             <Router>
-                <NavBar {...{loggedIn, email}}/>
+                    <NavBar {...{loggedIn, promo}}/>
                 <div>
                     <Route exact path="/login" render={
                         (routeProps) => <LoginComp {...{setLoggedIn, setEmail, ...routeProps}} />
                     }/>
                     <Route exact path="/station" component={SearchStation}/>
                     <Route exact path="/user" render={
-                        (routeProps) => <UserPanel {...{email, ...routeProps}}/>}/>
+                        (routeProps) => <UserPanel {...{email, setPromo, ...routeProps}}/>}/>
                 </div>
             </Router>
         </div>
