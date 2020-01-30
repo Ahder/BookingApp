@@ -8,7 +8,7 @@ export default class LoginComp extends Component<any, any> {
         this.state = {
             email: "",
             password: "",
-            status: null
+            status: ""
         };
         this.lunchLogin = this.lunchLogin.bind(this);
     }
@@ -16,7 +16,8 @@ export default class LoginComp extends Component<any, any> {
     async lunchLogin() {
         let isConnected = await LoginCall(this.state.email, this.state.password) || false;
         this.props.setLoggedIn(isConnected);
-        return isConnected ? this.setState({status: true}) : this.setState({status: false});
+        this.props.setEmail(this.state.email);
+        isConnected ? this.setState({status: true}) : this.setState({status: false});
     }
 
     render() {
@@ -38,7 +39,7 @@ export default class LoginComp extends Component<any, any> {
                     <button type="button" className="btn btn-primary btn-block" onClick={this.lunchLogin}>Submit
                     </button>
                 </form>}
-                <p>{this.state.status ? "Connected !" : ""}</p>
+                <p>{this.state.status ? "You are logged in !" : ""}</p>
             </div>
         );
     }

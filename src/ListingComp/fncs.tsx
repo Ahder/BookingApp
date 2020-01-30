@@ -9,7 +9,4 @@ export async function launchSncfRequest(query: any) {
     });
     return data.records.map((gare: any) =>  {return gare.fields.gare_ut_libelle});
 }
-
-launchSncfRequest('Lille').then(function (gares) {
-    return console.log(gares)
-});
+    

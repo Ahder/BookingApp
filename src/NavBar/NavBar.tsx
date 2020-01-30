@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import {Button} from "@material-ui/core";
 
 export class NavBar extends React.Component<any, any> {
 
@@ -25,13 +26,19 @@ export class NavBar extends React.Component<any, any> {
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
                         {!this.props.loggedIn &&<li className="nav-item active">
-                            <Link to="/login">Login</Link>
+                            <Button>
+                                <Link to="/login">Login</Link>
+                            </Button>
                         </li>}
                         {this.props.loggedIn && <li className="nav-item">
+                            <Button>
                             <Link to="/user">User panel</Link>
+                            </Button>
                         </li>}
                         {this.props.loggedIn && <li className="nav-item">
+                            <Button>
                             <Link to="/station">Booking</Link>
+                            </Button>
                         </li>}
                     </ul>
                 </div>
