@@ -40,6 +40,11 @@ export class NavBar extends React.Component<any, any> {
                             <Link to="/station">Booking</Link>
                             </Button>
                         </li>}
+                        {this.props.loggedIn && <li className="nav-item">
+                            <Button>
+                                <Link to="/basket">Basket</Link>
+                            </Button>
+                        </li>}
                     </ul>
                 </div>
             </nav>

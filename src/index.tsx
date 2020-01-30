@@ -8,6 +8,7 @@ import {BrowserRouter as Router, Route} from "react-router-dom";
 import {UserPanel} from "./UserPanel/UserPanel";
 import {NavBar} from "./NavBar/NavBar";
 import LoginComp from "./LoginComp/LoginComp";
+import BasketComp from "./Basket/BasketComp";
 
 export default function App() {
 
@@ -33,8 +34,9 @@ export default function App() {
                     }/>
                     <Route exact path="/station" component={SearchStation}/>
                     <Route exact path="/user" render={
-                        (routeProps) => <UserPanel {...{email, setPromo, ...routeProps}}/>}/>
-                </div>
+                        (routeProps) => <UserPanel {...{email, promo, setPromo, ...routeProps}}/>}/>
+                    <Route exact path="/basket" render={
+                        (routeProps) => <BasketComp {...{promo, ...routeProps}}/>}/>                </div>
             </Router>
         </div>
     );
