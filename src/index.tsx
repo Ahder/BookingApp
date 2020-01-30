@@ -12,26 +12,15 @@ import {
     Link
 } from "react-router-dom";
 import {UserPanel} from "./UserPanel/UserPanel";
-import NavBar from "./NavBar/NavBar";
+import {NavBarCustom} from "./NavBar/NavBar";
 import LoginComp from "./LoginComp/LoginComp";
 
 export default function App() {
     return (
         <div>
             <Router>
-                <NavBar/>
+            <NavBarCustom/>
                 <div>
-             {/*       <nav>
-                        <ul>
-                            <li>
-                                <Link to="/station">Search station</Link>
-                            </li>
-                            <li>
-                                <Link to="/user">User</Link>
-                            </li>
-                        </ul>
-                    </nav>*/}
-
                     <Route exact path="/login" component={LoginComp}/>
                     <Route exact path="/station" component={SearchStation}/>
                     <Route exact path="/user" component={UserPanel}/>

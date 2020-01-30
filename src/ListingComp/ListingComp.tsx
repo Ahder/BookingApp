@@ -12,7 +12,8 @@ export default class ListingComp extends React.Component<any, any> {
                 <h1>Liste des gares</h1>
                 <ul className="list-group">
                     {this.props.stations.map((value: any, index: any) => {
-                        return <li>{value}</li>
+                        return <button type="button" className="list-group-item list-group-item-action">{value}</button>
+
                     })}
                 </ul>
             </div>

@@ -1,68 +1,47 @@
 import React from 'react';
-import {AppBar, Box, Tab, Theme, Typography} from "@material-ui/core";
-import {Router} from "@material-ui/icons";
-import Tabs from '@material-ui/core/Tabs';
-import {makeStyles} from "@material-ui/core/styles";
-import {Link, Route} from "react-router-dom";
-import LoginComp from "../LoginComp/LoginComp";
+import {Link} from "react-router-dom";
 
-interface TabPanelProps {
-    children?: React.ReactNode;
-    index: any;
-    value: any;
+/*
+<Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
+    <Tab label="Login" component={Link} to="/login"/>
+    <Tab label="Book" component={Link} to="/station" {...a11yProps(1)} />
+    <Tab label="User Panel" component={Link} to="/user"{...a11yProps(2)} />*/
+
+export class NavBarCustom extends React.Component<any, any> {
+
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            stations: []
+        };
+    }
+
+
+    render() {
+        return (
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="collapse navbar-collapse" id="navbarNav">
+                    <ul className="navbar-nav">
+                        <li className="nav-item active">
+                            <Link to="/login">Login</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/user">User panel</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/station">Booking</Link>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        );
+    }
+
 }
 
-function TabPanel(props: TabPanelProps) {
-    const {children, value, index, ...other} = props;
-
-    return (
-        <Typography
-            component="div"
-            role="tabpanel"
-            hidden={value !== index}
-            id={`simple-tabpanel-${index}`}
-            aria-labelledby={`simple-tab-${index}`}
-            {...other}
-        >
-            {value === index && <Box p={3}>{children}</Box>}
-        </Typography>
-    );
-}
-
-function a11yProps(index: any) {
-    return {
-        id: `simple-tab-${index}`,
-        'aria-controls': `simple-tabpanel-${index}`,
-    };
-}
-
-const useStyles = makeStyles((theme: Theme) => ({
-    root: {
-        flexGrow: 1,
-        backgroundColor: theme.palette.background.paper,
-    },
-}));
-
-export default function NavBar() {
-
-    const classes = useStyles();
-    const [value, setValue] = React.useState(0);
-
-    const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
-        setValue(newValue);
-    };
-
-    return (
-            <div className={classes.root}>
-                <AppBar position="static">
-                    <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-                        <Tab label="Login" component={Link} to="/login"/>
-                        <Tab label="Book"  component={Link} to="/station" {...a11yProps(1)} />
-                        <Tab label="User Panel" component={Link} to="/user"{...a11yProps(2)} />
-                    </Tabs>
-                </AppBar>
-            </div>
-    );
-}
 
 
