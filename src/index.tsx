@@ -32,7 +32,9 @@ export default function App() {
                     <Route exact path="/login" render={
                         (routeProps) => <LoginComp {...{setLoggedIn, setEmail, ...routeProps}} />
                     }/>
-                    <Route exact path="/station" component={SearchStation}/>
+                    <Route exact path="/station"render={
+                        (routeProps) => <SearchStation {...{promo, ...routeProps}} />
+                    }/>
                     <Route exact path="/user" render={
                         (routeProps) => <UserPanel {...{email, promo, setPromo, ...routeProps}}/>}/>
                     <Route exact path="/basket" render={

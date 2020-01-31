@@ -1,27 +1,28 @@
 import React from 'react';
 import InputComp from "../InputComp/InputComp";
-import ListingComp from "../ListingComp/ListingComp";
-
+import Item from "../ListingComp/Item";
 
 export class SearchStation extends React.Component<any, any> {
 
     constructor(props: any) {
         super(props);
         this.state = {
-            stations: []
+            departure: "",
+            arrival: ""
         };
-        this.setGares = this.setGares.bind(this);
+        this.setStations = this.setStations.bind(this);
     }
 
-    async setGares(gares: any) {
-        this.setState({stations: gares});
+
+    async setStations(depFromChild: any, arrivFromChild: any) {
+        this.setState({departure: depFromChild, arrival: arrivFromChild});
     }
 
     render() {
         return (
             <div>
-                <InputComp setGares={this.setGares}/>
-                <ListingComp stations={this.state.stations}/>
+                <InputComp setStations={this.setStations}/>
+                {(this.state.departure && this.state.arrival) && <Item departure={this.state.departure} arrival={this.state.arrival} promo={this.props.promo}/>}
             </div>
         );
     }
