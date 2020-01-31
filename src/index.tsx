@@ -38,7 +38,8 @@ export default function App() {
                     <Route exact path="/user" render={
                         (routeProps) => <UserPanel {...{email, promo, setPromo, ...routeProps}}/>}/>
                     <Route exact path="/basket" render={
-                        (routeProps) => <BasketComp {...{promo, ...routeProps}}/>}/>                </div>
+                        (routeProps) => <BasketComp {...{promo, ...routeProps}}/>}/>
+                </div>
             </Router>
         </div>
     );
